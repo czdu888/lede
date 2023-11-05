@@ -14,13 +14,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+
+  build_openwrt:
+
+    name: Build OpenWrt Firmware
+
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v3
-      - run: dotnet --version
-      - run: dotnet build
 
     steps:
       - name: Space cleanup and Initialization environment
