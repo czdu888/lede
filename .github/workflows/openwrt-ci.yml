@@ -8,21 +8,19 @@
 name: OpenWrt-CI
 
 on:
-  schedule:
-    - cron: 0 20 * * *
-push:
-  branches:
-    - master
-permissions:
-  contents: read
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-
-  build_openwrt:
-
-    name: Build OpenWrt Firmware
-
+  build:
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-dotnet@v3
+      - run: dotnet --version
+      - run: dotnet build
 
     steps:
       - name: Space cleanup and Initialization environment
